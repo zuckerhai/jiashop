@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.plutus.dao.OrderDao">
+    <select id="findAllWithCustomerPageableByCustomerId" parameterType="com.plutus.dto.CustomerOrderRequest" resultType="com.plutus.entity.Order">
+        SELECT
+	      proid AS proid,
+	      proname AS proname,
+	      protype AS protype,
+	      prolab AS prolab,
+	      prodescrip AS prodescrip,
+	      addtime AS addtime,
+	      files AS files,
+	      file AS file,
+	      tags AS tags
+        FROM
+	      orders
+	   <trim prefix="WHERE" prefixOverrides="AND |OR ">
+          <if test="search != null">
+              (tags like CONCAT('%',#{search},'%')
+	          or prodescrip like CONCAT('%',#{search},'%'))     
+          </if>
+           <if test="protype!=null and protype!=''">
+             AND protype = #{protype}
+           </if>
+          </trim>	      
+        ORDER BY
+	       addtime desc LIMIT #{offset}, #{limit}
+    </select>
+
+    <select id="findCountByCustomerId" parameterType="com.plutus.dto.CustomerOrderRequest" resultType="java.lang.Integer">
+        SELECT
+          count(*)
+        FROM
+          orders
+           <trim prefix="WHERE" prefixOverrides="AND |OR ">
+          <if test="search != null">
+              (tags like CONCAT('%',#{search},'%')
+	          or prodescrip like CONCAT('%',#{search},'%'))     
+          </if>
+           <if test="protype!=null and protype!=''">
+             AND protype = #{protype}
+           </if>
+          </trim>	      
+    </select>
+
+    <insert id="addOrder" parameterType="com.plutus.entity.Order" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO orders(proname, protype, prolab, prodescrip, addtime, files, tags,file)
+        VALUES(#{proname}, #{protype}, #{prolab}, #{prodescrip}, #{addtime}, #{files}, #{tags},#{file})
+    </insert>
+    
+    <delete id="delProById" parameterType="java.lang.Long">
+         delete from orders where proid=#{proid}
+    </delete>
+    
+    <update id="updatePro" parameterType="com.plutus.entity.Order">
+      update orders set proname=#{proname},protype=#{protype},prodescrip=#{prodescrip},tags=#{tags},prolab=#{prolab} 
+      where proid=#{proid}
+   
+    </update>
+    
+    <select id="getSinglePro" parameterType="com.plutus.dto.CustomerOrderRequest" resultType="com.plutus.entity.Order">
+              SELECT
+	      proid AS proid,
+	      proname AS proname,
+	      protype AS protype,
+	      prolab AS prolab,
+	      prodescrip AS prodescrip,
+	      addtime AS addtime,
+	      files AS files,
+	      file AS file,
+	      tags AS tags
+        FROM
+	      orders
+	    where 
+	      proid=${customerId}
+    </select>
+</mapper>
+

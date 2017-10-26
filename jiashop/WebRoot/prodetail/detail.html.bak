@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>商城</title>
+<link rel="stylesheet" type="text/css" href="css/loaders.min.css" />
+<link rel="stylesheet" type="text/css" href="css/loading.css" />
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    	$(window).load(function(){
+    		$(".loading").addClass("loader-chanage")
+    		$(".loading").fadeOut(300)
+    	})
+    </script>
+</head>
+<!--loading页开始-->
+<div class="loading">
+	<div class="loader">
+		<div class="loader-inner pacman">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</div>
+<!--loading页结束-->
+<body>
+	<header class="detail-header fixed-header">
+		<a href="javascript:history.go(-1)"><img
+			src="images/detail-left.png" /></a> <a onclick="copy();" class="right" data-clipboard-action="copy" data-clipboard-target="#ctext"><img
+			src="images/shopbar.png" /></a>
+	</header>
+
+
+	<div class="contaniner fixed-contb">
+		<section class="detail">
+			<figure class="swiper-container">
+				<ul class="swiper-wrapper" id="images">
+				</ul>
+				<div class="swiper-pagination"></div>
+			</figure>
+			<dl class="jiage">
+				<dt>
+					<h3 id="title"></h3>
+					<div class="collect">
+						<a onclick="store();"><img src="images/detail-heart-hei.png" />
+							<p>收藏</p></a>
+					</div>
+				</dt>
+				<dd id="price">
+					
+				</dd>
+			</dl>
+
+			<article class="detail-article">
+				<nav>
+					<ul class="article">
+						<li id="talkbox1" class="article-active">商品详情</li>
+						<li id="talkbox2">佳佳点评</li>
+					</ul>
+				</nav>
+
+				<section class="talkbox1">
+					<dl class="detailinfo">
+						<dd id="infoHtml">
+							<b>商品名称：1</b> <b>商品类型：</b> <b>商品标签：</b> <b>商品详细描述：</b> <b>商品上架时间：</b>
+						</dd>
+					</dl>
+				</section>
+
+				<section class="talkbox2" style="display: none;">
+					<ul class="talk">
+						<li>
+							<figure>
+								<img src="images/detail-tou.png" />
+							</figure>
+							<dl>
+								<dt>
+									<p>佳佳</p>
+									<div class="star" >
+										<span><img src="images/detail-iocn01.png" /></span> <span><img
+											src="images/detail-iocn01.png" /></span> <span><img
+											src="images/detail-iocn01.png" /></span> <span><img
+											src="images/detail-iocn01.png" /></span> <span><img
+											src="images/detail-iocn01.png" /></span>
+									</div>
+								</dt>
+								<dd>我也不知道说什么，反正就是很正哦，赶紧软妹币买买买</dd>
+							</dl>
+						</li>
+					</ul>
+				</section>
+
+			</article>
+		</section>
+	</div>
+
+
+	<footer class="detail-footer fixed-footer">
+		<a href="javascript:history.go(-1)" class="go-car"> <input
+			type="button" value="返回" />
+		</a> <a onclick="copy2();" class="buy" data-clipboard-action="copy" data-clipboard-target="#ctext"> 复制联系店家 </a>
+	</footer>
+	<div style="dispaly:none;"><input  id="ctext" value=""/></div>
+  	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×</button>
+					<h6 class="modal-title" id="myModalLabel">提示框</h6>
+				</div>
+				<div class="modal-body" id='msg'></div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/detail.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+var detailData={
+		   proInfo:"",
+		   fileInfo:"",
+		   proid:""
+		   
+}
+	$(window).scroll(function() {
+	    if ($(".detail-header").offset().top > 50) {
+        $(".detail-header").addClass("change");
+    } else {
+        $(".detail-header").removeClass("change");
+    }
+	});
+</script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script type="text/javascript">
+       
+       function copy(){
+    	 var buy= $("#ctext").val();
+    	 new Clipboard(".right", {
+    	        text: function(trigger) {
+    	            return trigger.getAttribute('id');
+    	        }
+    	    });
+    	   alert("商品信息已经复制，粘贴给店家，进行询价购买");
+    	   
+       }
+       function copy2(){
+      	 var buy= $("#ctext").val();
+      	 new Clipboard(".buy", {
+      	        text: function(trigger) {
+      	            return trigger.getAttribute('id');
+      	        }
+      	    });
+      	   alert("商品信息已经复制，粘贴给店家，进行询价购买");
+      	   
+         }
+      function store(){
+    	   
+    	   alert("店家的帅老公正在加急开发中");
+    	   
+       }
+
+		$(document).ready(function(){
+			var mySwiper = new Swiper('.swiper-container',{
+				    loop: true,
+				    speed:1000,
+					autoplay: 2000,
+					pagination: '.swiper-pagination',
+				  });
+		})
+	</script>
+	<script type="text/javascript">
+	$(function(){
+		$('.chose li').click(function(){
+				
+			$(this).addClass('chose-active').siblings().removeClass('chose-active');
+
+			var tags=document.getElementsByClassName('chose-active');//获取标签
+
+			var tagArr = "";
+	        for(var i=0;i < tags.length; i++)
+	        {
+	            tagArr += tags[i].innerHTML;//保存满足条件的元素
+
+	        }
+	       
+	        $('#sss').html(tagArr);
+
+		});
+
+		$('.article li').click(function(){
+
+			$(this).addClass('article-active').siblings().removeClass('article-active');
+			if($(this).attr("id")=="talkbox1"){
+				$('.talkbox1').show();
+				$('.talkbox2').hide();
+			}else{
+				$('.talkbox2').show();
+				$('.talkbox1').hide();
+			}
+
+		});	
+	});
+	
+</script>
+</body>
+</html>

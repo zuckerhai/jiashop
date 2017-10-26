@@ -1,0 +1,113 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+}
+form .form-head {
+    width: 100%;
+    line-height: 50px;
+    border: 1px solid #ccc;
+    border-width: 0px 1px 1px 1px;
+    padding: 0px 20px;
+    font-size: 20px;
+    font-weight: 900;
+    background-color: #e0ecfa;
+}
+form .form-head.first-head {
+    border-radius: 10px 10px 0px 0px;
+    border-width: 1px;
+}
+form #addform{
+	width: 100%;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    border-width: 0px 1px 1px 1px;
+    padding: 0px 20px;
+    font-weight: 900;
+
+}
+form #showform{
+	width: 100%;
+    line-height: 20px;
+    border: 1px solid #ccc;
+    border-width: 0px 1px 1px 1px;
+    padding: 0px 20px;
+    font-weight: 900;
+}
+
+
+.clearfix{
+	display:block;
+	font-size: 14px;
+	margin:2px;
+}
+#addform span{
+	margin:5px;
+	padding:2px;
+}
+.right {
+    position: fixed;
+    top: 72px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #ffffff;
+    overflow: auto;
+}
+.right .tabs {
+    width: 100%;
+    height: 50px;
+    background-color: #ffffff;
+    border-bottom: 2px solid rgba(34,36,38,.15);
+}
+.right .tabs .tab {
+    width: 100px;
+    height: 100%;
+    margin-right: -3px;
+    line-height: 48px;
+    height: 50px;
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    font-family: 微软雅黑;
+    cursor: pointer;
+    display: none;
+}
+.right .tabs .tab.selected {
+    background-color: #ffffff;
+    color: rgba(0,0,0,.95);
+    border-bottom: 2px solid #1B1C1D;
+    display: inline-block;
+}
+.right .tabs .tab.unactive {
+    background-color: #ffffff;
+    border-bottom: 2px solid rgba(34,36,38,.15);
+    color: #dddddd;
+    display: inline-block;
+}
+.right .main-container {
+    margin: 20px;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    overflow: auto;
+    background-color: #fff;
+}
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+.bs-callout-info {
+    border-left-color: #1ab394;
+}
+.alert {
+    width: 200px;
+    margin: auto;
+    margin-top: 20px;
+}
